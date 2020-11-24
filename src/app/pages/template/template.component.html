@@ -1,0 +1,45 @@
+<h3>Formulario</h3>
+<hr>
+<form autocomplete="off" (ngSubmit)="enviar(form)" #form="ngForm">
+<!--------------------------Primer Input (Name)----------------------------->
+<div class="form-group row">
+    <label for="name" class="col-2 col-form-label">name</label>
+        <div class="col-8">
+            <input type="text" class="form-control" required minlength="7" [ngModel]="usuario.name" name="name" placeholder="name" #name="ngModel" [class.is-valid]="name.valid" [class.is-invalid]="name.invalid && name.touched">
+            <!-- Mensaje de error: -->
+            <div *ngIf="name.errors?.required" class="invalid-feedback">
+                 Campo obligatorio.
+              </div>
+              <div *ngIf="name.errors?.minlength" class="invalid-feedback">
+                Logitud inválido.
+             </div>
+        </div>
+</div>
+<!--------------------------Segundo Input(Job)----------------------------->
+ 
+<!--------------------------Tercer Input(Email)----------------------------->
+ <div class="form-group row">
+    <label for="email" class="col-2 col-form-label">Email</label>
+        <div class="col-8">
+            <input type="text" class="form-control" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [ngModel]="usuario.email" name="email" #email="ngModel" [class.is-valid]="email.valid" [class.is-invalid]="email.invalid && email.touched">
+            <!-- Mensaje de error: -->
+            <div *ngIf="email.errors?.required" class="invalid-feedback">
+                Campo obligatorio.
+             </div>
+             <div *ngIf="email.errors?.minlength" class="invalid-feedback">
+               Logitud inválido.
+            </div>
+        </div>    
+</div>
+<!--------------------------Botón Enviar----------------------------->
+<div class="form-group row">
+    <!-- <label for="email" class="col-2 col-form-label">Email</label> -->
+        <div class="col-8 input-group">
+            <button [disabled]="!form.valid" type="submit" class="btn btn-outline-dark btn-block"> Guardar</button>
+        </div>    
+</div>
+<!-------- Alerta -------->
+<div class="alert alert-danger" *ngIf="form.invalid && form.touched && form.submitted">
+Formulario incorrecto.
+</div>
+</form>
