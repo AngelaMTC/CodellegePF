@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ServiciosService } from 'src/app/services/servicios/servicios.service';
 import { ValidationService } from 'src/app/services/validation/validation.service';
 
 @Component({
   selector: 'app-reactive',
   templateUrl: './reactive.component.html',
-  styles: [
-  ]
+  styleUrls: ['./reactive.component.css']
 })
 export class ReactiveComponent implements OnInit {
 
@@ -38,11 +38,31 @@ export class ReactiveComponent implements OnInit {
     return (pass1 == pass2) ? false : true;
   }
 
-  constructor(private fb: FormBuilder, private CustomValidation: ValidationService) { 
+  constructor(
+    private fb: FormBuilder,
+    private CustomValidation: ValidationService,
+    private s: ServiciosService) {
     this.createForm();
   }
+usuario = {
+  name: '',
+  email: '',
+  job: ''
+};
+// Saber cómo funciona el get Lista Users, servicios.service.ts, reactive div List users.
+  Servicios: any [] = [];
 
   ngOnInit(): void {
+this.s.getListUsers().subscribe(data => {
+  this.Servicios = data;
+  console.log(this.Servicios);
+
+  // Agregar opción por default:
+  this.Servicios.unshift({
+    name: '-- Selecione --',
+    code: ''
+  });
+});
   }
 
   createForm(){

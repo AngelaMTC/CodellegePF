@@ -1,8 +1,10 @@
 import { Routes } from '@angular/router';
 import { TemplateComponent } from './pages/template/template.component';
+import { ReactiveComponent} from './pages/reactive/reactive.component';
 
 // Constante:
 export const routes: Routes = [
     {path: 'template', component: TemplateComponent },
-    {path: '**', pathMatch: 'full', redirectTo: 'template' },
+    {path: 'reactive', component: ReactiveComponent},
+    {path: '**', pathMatch: 'full', redirectTo: 'reactive' },
 ]
