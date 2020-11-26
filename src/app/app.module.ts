@@ -1,38 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TemplateComponent } from './pages/template/template.component';
-
-// Importar Router Module de @angular/router:
+import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { RouterModule } from '@angular/router';
-
-// Importar la clase creada en el archivo app.routes.ts:
-import { routes } from './../app/app.routes';
-
-// Para trabajar con formularios:
-import { FormsModule } from '@angular/forms';
-
-// Para trabajar con formularios reactivos:
-import { ReactiveFormsModule } from '@angular/forms';
-// Para peticiones HTTP es necesaior importar:
+import { routes } from './app.routes';
+import { UsersComponent } from './components/users/users.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ReactiveComponent } from './pages/reactive/reactive.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { UserComponent } from './components/user/user.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PasswordPipe } from './pipes/password/password.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TemplateComponent,
-    ReactiveComponent
+    NavbarComponent,
+    UsersComponent,
+    SignUpComponent,
+    UserComponent,
+    PasswordPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     RouterModule.forRoot(routes),
-    FormsModule,
     HttpClientModule,
-    ReactiveFormsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

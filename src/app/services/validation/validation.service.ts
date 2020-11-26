@@ -8,13 +8,20 @@ export class ValidationService {
 
   constructor() { }
 
-  // Validación de contraseñas:
+  validEmail(control: FormControl){
+    let regEx = /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$/;
+    if( !regEx.test(control.value) ){
+      return {email: true};
+    }
+    return null;
+  }
+
   matchPassword(pass1: string, pass2: string){
-    return(formGroup: FormGroup) => {
+    return( formGroup: FormGroup ) => {
       const controlPass1 = formGroup.controls[pass1];
       const controlPass2 = formGroup.controls[pass2];
 
-      if ( controlPass1.value === controlPass2.value){
+      if(controlPass1.value === controlPass2.value){
         controlPass2.setErrors(null);
       }else{
         controlPass2.setErrors({passError: true});

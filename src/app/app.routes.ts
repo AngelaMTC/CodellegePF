@@ -1,10 +1,11 @@
 import { Routes } from '@angular/router';
-import { TemplateComponent } from './pages/template/template.component';
-import { ReactiveComponent} from './pages/reactive/reactive.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { UserComponent } from './components/user/user.component';
+import { UsersComponent } from './components/users/users.component';
 
-// Constante:
 export const routes: Routes = [
-    {path: 'template', component: TemplateComponent },
-    {path: 'reactive', component: ReactiveComponent},
-    {path: '**', pathMatch: 'full', redirectTo: 'reactive' },
+    {path: 'users', component: UsersComponent},
+    {path: 'signUp', component: SignUpComponent},
+    {path: 'user/:id', component: UserComponent},
+    {path: '**', pathMatch: 'full', redirectTo: 'home'}
 ]
