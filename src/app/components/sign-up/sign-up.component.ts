@@ -6,7 +6,7 @@ import { ValidationService } from 'src/app/services/validation/validation.servic
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css']
+  styles: []
 })
 export class SignUpComponent implements OnInit {
 
